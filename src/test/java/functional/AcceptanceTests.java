@@ -9,7 +9,8 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class AcceptanceTests {
 
@@ -23,8 +24,7 @@ public class AcceptanceTests {
         myAccount.accept(deposit);
         //ASSERT
         assertThat(myAccount.balance()).isEqualTo(new Amount(1350L));
-        Transactions transactions = myAccount.getTransactions();
-        assertThat(transactions.contains(deposit)).isTrue();
+        assertThat(myAccount.transactionProcessed(deposit)).isTrue();
     }
 
     @Test

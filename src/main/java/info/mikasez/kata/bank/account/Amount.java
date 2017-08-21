@@ -2,6 +2,10 @@ package info.mikasez.kata.bank.account;
 
 import java.util.Objects;
 
+/**
+ * Class representing the transaction currency <br/>
+ * Should not be mutable
+ * */
 public class Amount {
     private long amount;
 
@@ -9,14 +13,29 @@ public class Amount {
         this.amount = amount;
     }
 
+    /**
+     * Create a new amount from a value
+     * @param value positive value representing currency
+     * */
+    public static Amount from(long value) {
+        assert value > 0L;
+        return new Amount(value);
+    }
+
+    /**
+     * Returns current amount value
+     * @return amount : numeric representation of this money
+     * */
     public long getAmount() {
         return amount;
     }
 
-    public static Amount from(long value) {
-        return new Amount(value);
-    }
-
+    /**
+     * Returns a new amount value constructed adding together two other amounts <br/>
+     * Doesn't change any of other amounts
+     * @param amount : amount to add
+     * @return sum of this amount value with passed value
+     * */
     public Amount plus(Amount amount) {
         return new Amount(this.amount + amount.amount);
     }

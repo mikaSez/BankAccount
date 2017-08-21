@@ -2,9 +2,10 @@ package info.mikasez.kata.bank.account;
 
 import info.mikasez.kata.bank.account.actions.Transaction;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Class representing a simple bank account <br/>
+ * You can deposit money into this account
+ * */
 public class Account {
 
     private final AccountName name;
@@ -17,16 +18,31 @@ public class Account {
         this.balance = new Amount(initialDeposit);
     }
 
+    /**
+     * Execute a transaction on a given account <br/>
+     * The transaction itself determines the action on the account balance <br/>
+     * All transaction are recorded
+     * @param deposit {@link Transaction} to be executed on this account
+     * */
     public void accept(Transaction deposit) {
         this.transactions.add(deposit);
         this.balance = deposit.act(this.balance);
     }
 
+    /**
+     * Returns the current balance of the account
+     * */
     public Amount balance() {
         return balance;
     }
 
-    public Transactions getTransactions() {
-        return transactions;
+
+    /**
+     * Checks if a transaction already played on a given account <br/>
+     * @param transaction: a transaction to be checked <br/>
+     * @return true if transaction played
+     * */
+    public boolean transactionProcessed(Transaction transaction){
+        return transactions.contains(transaction);
     }
 }

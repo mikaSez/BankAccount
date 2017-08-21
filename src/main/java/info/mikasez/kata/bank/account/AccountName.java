@@ -1,5 +1,8 @@
 package info.mikasez.kata.bank.account;
 
+/**
+ * Class representing current account owner
+ * */
 public class AccountName {
     private String value;
 
