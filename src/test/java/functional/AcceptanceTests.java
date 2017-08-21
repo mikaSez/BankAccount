@@ -5,6 +5,7 @@ import info.mikasez.kata.bank.account.Amount;
 import info.mikasez.kata.bank.account.Transactions;
 import info.mikasez.kata.bank.account.actions.Deposit;
 import info.mikasez.kata.bank.account.actions.Transaction;
+import info.mikasez.kata.bank.account.actions.Withdraw;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -30,11 +31,13 @@ public class AcceptanceTests {
     @Test
     public void shouldBeAbleToMakeAWithdraw(){
         //ACT
-
+        Account myAccount = new Account("Name", 1000L);
+        Transaction withdraw = new Withdraw(350L, LocalDateTime.parse("2007-12-03T10:15:30"));
         //ARRANGE
-
+        myAccount.accept(withdraw);
         //ASSERT
-        fail("not yet implemented");
+        assertThat(myAccount.balance()).isEqualTo(new Amount(650L));
+        assertThat(myAccount.transactionProcessed(withdraw)).isTrue();
     }
 
     @Test

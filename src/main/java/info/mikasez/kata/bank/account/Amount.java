@@ -40,6 +40,16 @@ public class Amount {
         return new Amount(this.amount + amount.amount);
     }
 
+    /**
+     * Returns a new amount value constructed subtraction passed amount to the current amount<br/>
+     * Doesn't change any of other amounts
+     * @param amount : amount to subtract
+     * @return subtraction of this amount value with passed value
+     * */
+    public Amount minus(Amount amount) {
+        return new Amount(this.amount - amount.amount);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,5 +61,10 @@ public class Amount {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
+    }
+
+    @Override
+    public String toString() {
+        return "[" + amount + ']';
     }
 }
