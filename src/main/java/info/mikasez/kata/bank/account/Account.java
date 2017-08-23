@@ -15,7 +15,7 @@ public class Account {
 
     public Account( long initialDeposit) {
         this.transactions = new Transactions();
-        this.balance = new Amount(initialDeposit);
+        this.balance = Amount.from(initialDeposit);
     }
 
     /**
@@ -25,7 +25,7 @@ public class Account {
      * @param transaction {@link Transaction} to be executed on this account
      * */
     public void accept(Transaction transaction) {
-        this.balance = transaction.act(this.balance);
+        this.balance = transaction.actUpon(this.balance);
         this.transactions.add(ExecutedTransaction.from(transaction, this.balance));
     }
 
@@ -38,6 +38,6 @@ public class Account {
 
 
    public String[][] extractHistory() {
-        return transactions.all();
+        return transactions.allToPrintableArray();
     }
 }

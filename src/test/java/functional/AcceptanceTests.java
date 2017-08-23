@@ -8,7 +8,6 @@ import info.mikasez.kata.bank.account.actions.Transaction;
 import info.mikasez.kata.bank.account.actions.Withdraw;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,7 +23,7 @@ public class AcceptanceTests {
         //ARRANGE
         myAccount.accept(deposit);
         //ASSERT
-        assertThat(myAccount.balance()).isEqualTo(new Amount(1350L));
+        assertThat(myAccount.balance()).isEqualTo(Amount.from(1350L));
     }
 
     @Test
@@ -35,11 +34,11 @@ public class AcceptanceTests {
         //ARRANGE
         myAccount.accept(withdraw);
         //ASSERT
-        assertThat(myAccount.balance()).isEqualTo(new Amount(650L));
+        assertThat(myAccount.balance()).isEqualTo(Amount.from(650L));
     }
 
     @Test
-    public void shouldBeAbleToSeeTheHistory() throws IOException {
+    public void shouldBeAbleToSeeTheHistory() {
         //ACT
         Account myAccount = new Account( 1000L);
         Transaction deposit = new Deposit(350L, LocalDateTime.parse("2007-12-03T10:15:30"));
@@ -59,7 +58,7 @@ public class AcceptanceTests {
         data[1] = datum2;
         data[2] = datum3;
 
-        assertThat(myAccount.balance()).isEqualTo(new Amount(1050L));
+        assertThat(myAccount.balance()).isEqualTo(Amount.from(1050L));
         assertThat(myAccount.extractHistory()).isEqualTo(data);
 
         //just for visuals

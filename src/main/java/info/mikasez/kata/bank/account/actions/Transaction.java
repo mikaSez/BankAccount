@@ -10,7 +10,7 @@ public interface Transaction {
      * @param balance the amount we want to act upon in our transaction (the amount stays immutable)
      * @return The new amount
      */
-    Amount act(final Amount balance);
+    Amount actUpon(final Amount balance);
 
     /**
      * Returns a string representation of the content of a given transaction

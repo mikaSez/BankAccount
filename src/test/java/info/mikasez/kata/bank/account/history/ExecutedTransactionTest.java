@@ -10,7 +10,7 @@ public class ExecutedTransactionTest {
     @Test
     public void shouldPrintAValidStatement(){
         //ARRANGE
-        ExecutedTransaction transaction = ExecutedTransaction.from(new MockTransaction(), new Amount(200L));
+        ExecutedTransaction transaction = ExecutedTransaction.from(new MockTransaction(), Amount.from(200L));
         String[] expectedResult = new String[]{"MOCK_TRANSACTION", "200"};
         //ACT
         String[] array = transaction.toPrintableArray();
@@ -22,7 +22,7 @@ public class ExecutedTransactionTest {
     private class MockTransaction implements Transaction {
 
         @Override
-        public Amount act(Amount balance) {
+        public Amount actUpon(Amount balance) {
             return null;
         }
 

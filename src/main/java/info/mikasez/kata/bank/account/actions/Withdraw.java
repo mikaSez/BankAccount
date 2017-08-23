@@ -24,12 +24,12 @@ public class Withdraw implements Transaction {
      * @param transactionTime the date / time of the transaction
      */
     public Withdraw(long amount, LocalDateTime transactionTime) {
-        this.amount = new Amount(amount);
+        this.amount = Amount.from(amount);
         this.transactionTime = transactionTime;
     }
 
     @Override
-    public Amount act(Amount balance) {
+    public Amount actUpon(Amount balance) {
         return balance.minus(amount);
     }
 

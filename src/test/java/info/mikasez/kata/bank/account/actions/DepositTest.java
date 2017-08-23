@@ -13,10 +13,10 @@ public class DepositTest {
     public void shouldMakeADeposit(){
         //ARRANGE
         Deposit deposit = new Deposit(200L, LocalDateTime.now());
-        Amount amountToActUpon = new Amount((100L));
-        Amount expected = new Amount(300L);
+        Amount amountToActUpon = Amount.from((100L));
+        Amount expected = Amount.from(300L);
         //ACT
-        Amount result = deposit.act(amountToActUpon);
+        Amount result = deposit.actUpon(amountToActUpon);
         //ASSERT
         Assertions.assertThat(result).isEqualTo(expected);
     }

@@ -7,10 +7,10 @@ import java.util.Objects;
  * Should not be mutable
  * */
 public class Amount {
-    private long amount;
+    private final long value;
 
-    public Amount(long amount) {
-        this.amount = amount;
+    private Amount(long value) {
+        this.value = value;
     }
 
     /**
@@ -28,7 +28,7 @@ public class Amount {
      * @return sum of this amount value with passed value
      * */
     public Amount plus(Amount amount) {
-        return new Amount(this.amount + amount.amount);
+        return new Amount(this.value + amount.value);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Amount {
      * @return subtraction of this amount value with passed value
      * */
     public Amount minus(Amount amount) {
-        return new Amount(this.amount - amount.amount);
+        return new Amount(this.value - amount.value);
     }
 
     @Override
@@ -46,17 +46,17 @@ public class Amount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Amount amount1 = (Amount) o;
-        return amount == amount1.amount;
+        return value == amount1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount);
+        return Objects.hash(value);
     }
 
     @Override
     public String toString() {
-        return amount + "";
+        return value + "";
     }
 
 }

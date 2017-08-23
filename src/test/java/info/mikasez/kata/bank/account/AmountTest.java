@@ -9,11 +9,11 @@ public class AmountTest {
     @Test
     public void shouldAddTwoAmounts() throws Exception {
         //ARRANGE
-        Amount one = new Amount(100L);
-        Amount two = new Amount(100L);
+        Amount one = Amount.from(100L);
+        Amount two = Amount.from(100L);
 
-        Amount expectedUnchanged = new Amount(100L);
-        Amount expectedResult = new Amount(200L);
+        Amount expectedUnchanged = Amount.from(100L);
+        Amount expectedResult = Amount.from(200L);
         //ACT
         Amount three = one.plus(two);
         //ASSERT
@@ -27,12 +27,12 @@ public class AmountTest {
     @Test
     public void shouldSubtractTwoAmounts() throws Exception {
         //ARRANGE
-        Amount one = new Amount(100L);
-        Amount two = new Amount(100L);
+        Amount one = Amount.from(100L);
+        Amount two = Amount.from(100L);
 
 
-        Amount expectedUnchanged = new Amount(100L);
-        Amount expectedResult = new Amount(0L);
+        Amount expectedUnchanged = Amount.from(100L);
+        Amount expectedResult = Amount.from(0L);
         //ACT
         Amount three = one.minus(two);
         //ASSERT

@@ -22,7 +22,7 @@ public class Deposit implements Transaction {
      * @param transactionTime the date / time of the transaction
      */
     public Deposit(long amount, LocalDateTime transactionTime) {
-        this.amount = new Amount(amount);
+        this.amount = Amount.from(amount);
         this.transactionTime = transactionTime;
     }
 
@@ -30,7 +30,7 @@ public class Deposit implements Transaction {
      * {@inheritDoc}
      */
     @Override
-    public Amount act(Amount balance) {
+    public Amount actUpon(Amount balance) {
         return amount.plus(balance);
     }
 
