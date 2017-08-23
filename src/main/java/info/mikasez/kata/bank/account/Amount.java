@@ -65,6 +65,7 @@ public class Amount {
 
     @Override
     public String toString() {
-        return "[" + amount + ']';
+        return amount + "";
     }
+
 }

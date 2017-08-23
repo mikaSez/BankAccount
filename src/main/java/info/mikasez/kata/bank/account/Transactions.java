@@ -1,7 +1,6 @@
 package info.mikasez.kata.bank.account;
 
-import info.mikasez.kata.bank.account.actions.ExecutedTransaction;
-import info.mikasez.kata.bank.account.actions.Transaction;
+import info.mikasez.kata.bank.account.history.ExecutedTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +26,9 @@ public class Transactions {
         return transaction;
     }
 
-    /**
-     * Verify if a given transaction already played on this account
-     * @param transaction element to be searched for
-     * */
-    public boolean contains(final Transaction transaction){
-        return this.transactionList.contains(transaction);
-    }
-
     public String[][] all() {
-        return (String[][]) transactionList.stream()
-                .map(Transaction::toPrintableArray)
-                .toArray();
+        return transactionList.stream()
+                .map(ExecutedTransaction::toPrintableArray)
+                .toArray(String[][]::new);
     }
 }
