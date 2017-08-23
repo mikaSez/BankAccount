@@ -22,14 +22,6 @@ public class Amount {
     }
 
     /**
-     * Returns current amount value
-     * @return amount : numeric representation of this money
-     * */
-    public long getAmount() {
-        return amount;
-    }
-
-    /**
      * Returns a new amount value constructed adding together two other amounts <br/>
      * Doesn't change any of other amounts
      * @param amount : amount to add

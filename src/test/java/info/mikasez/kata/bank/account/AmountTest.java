@@ -11,12 +11,15 @@ public class AmountTest {
         //ARRANGE
         Amount one = new Amount(100L);
         Amount two = new Amount(100L);
+
+        Amount expectedUnchanged = new Amount(100L);
+        Amount expectedResult = new Amount(200L);
         //ACT
         Amount three = one.plus(two);
         //ASSERT
-        assertThat(one.getAmount()).isEqualTo(100L);
-        assertThat(two.getAmount()).isEqualTo(100L);
-        assertThat(three.getAmount()).isEqualTo(200L);
+        assertThat(one).isEqualTo(expectedUnchanged);
+        assertThat(two).isEqualTo(expectedUnchanged);
+        assertThat(three).isEqualTo(expectedResult);
 
     }
 
@@ -26,12 +29,16 @@ public class AmountTest {
         //ARRANGE
         Amount one = new Amount(100L);
         Amount two = new Amount(100L);
+
+
+        Amount expectedUnchanged = new Amount(100L);
+        Amount expectedResult = new Amount(0L);
         //ACT
         Amount three = one.minus(two);
         //ASSERT
-        assertThat(one.getAmount()).isEqualTo(100L);
-        assertThat(two.getAmount()).isEqualTo(100L);
-        assertThat(three.getAmount()).isEqualTo(0L);
+        assertThat(one).isEqualTo(expectedUnchanged);
+        assertThat(two).isEqualTo(expectedUnchanged);
+        assertThat(three).isEqualTo(expectedResult);
 
     }
 
