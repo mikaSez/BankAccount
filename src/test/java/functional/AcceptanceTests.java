@@ -50,7 +50,6 @@ public class AcceptanceTests {
         myAccount.accept(withdraw2);
         //ASSERT
         String [][] data = new String[3][4];
-        String [] columns = {"operation", "date", "amount", "balance"};
         String [] datum = {"DEPOSIT", "2007-12-03T10:15:30", "350", "1350"};
         String [] datum2 = {"WITHDRAW", "2007-12-04T10:15:30", "200", "1150"};
         String [] datum3 = {"WITHDRAW", "2007-12-10T10:15:30", "100", "1050"};
@@ -62,6 +61,7 @@ public class AcceptanceTests {
         assertThat(myAccount.extractHistory()).isEqualTo(data);
 
         //just for visuals
+        String [] columns = {"operation", "date", "amount", "balance"};
         TextTable tt = new TextTable(columns, data);
         tt.printTable();
     }
