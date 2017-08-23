@@ -1,5 +1,6 @@
 package info.mikasez.kata.bank.account;
 
+import info.mikasez.kata.bank.account.actions.ExecutedTransaction;
 import info.mikasez.kata.bank.account.actions.Transaction;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
  * Transactions can be only added, none can be deleted
  * */
 public class Transactions {
-    private List<Transaction> transactionList;
+    private List<ExecutedTransaction> transactionList;
 
     public Transactions() {
         this.transactionList = new ArrayList<>();
@@ -21,7 +22,7 @@ public class Transactions {
      * @param transaction : transaction to be added
      * @return the added transaction
      * */
-    public Transaction add(final Transaction transaction){
+    public ExecutedTransaction add(final ExecutedTransaction transaction){
         this.transactionList.add(transaction);
         return transaction;
     }
@@ -32,5 +33,11 @@ public class Transactions {
      * */
     public boolean contains(final Transaction transaction){
         return this.transactionList.contains(transaction);
+    }
+
+    public String[][] all() {
+        return (String[][]) transactionList.stream()
+                .map(Transaction::toPrintableArray)
+                .toArray();
     }
 }

@@ -3,7 +3,6 @@ package functional;
 import dnl.utils.text.table.TextTable;
 import info.mikasez.kata.bank.account.Account;
 import info.mikasez.kata.bank.account.Amount;
-import info.mikasez.kata.bank.account.Transactions;
 import info.mikasez.kata.bank.account.actions.Deposit;
 import info.mikasez.kata.bank.account.actions.Transaction;
 import info.mikasez.kata.bank.account.actions.Withdraw;
@@ -70,7 +69,7 @@ public class AcceptanceTests {
         tt.toCsv(outputStream);
 
         assertThat(myAccount.balance()).isEqualTo(new Amount(1050L));
-        assertThat(myAccount.getHistory()).isEqualTo(data);
+        assertThat(myAccount.extractHistory()).isEqualTo(data);
 
     }
 }

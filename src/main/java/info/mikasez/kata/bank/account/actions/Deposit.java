@@ -19,6 +19,7 @@ public class Deposit implements Transaction{
         return amount.plus(balance);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

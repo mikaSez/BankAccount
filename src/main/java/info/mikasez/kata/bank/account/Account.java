@@ -1,5 +1,6 @@
 package info.mikasez.kata.bank.account;
 
+import info.mikasez.kata.bank.account.actions.ExecutedTransaction;
 import info.mikasez.kata.bank.account.actions.Transaction;
 
 /**
@@ -12,6 +13,7 @@ public class Account {
     private Amount balance;
     private Transactions transactions;
 
+
     public Account(String accountName, long initialDeposit) {
         this.transactions = new Transactions();
         this.name = new AccountName(accountName);
@@ -22,11 +24,12 @@ public class Account {
      * Execute a transaction on a given account <br/>
      * The transaction itself determines the action on the account balance <br/>
      * All transaction are recorded
-     * @param deposit {@link Transaction} to be executed on this account
+     * @param transaction {@link Transaction} to be executed on this account
      * */
-    public void accept(Transaction deposit) {
-        this.transactions.add(deposit);
-        this.balance = deposit.act(this.balance);
+    public void accept(Transaction transaction) {
+        this.transactions.add(transaction);
+        this.balance = transaction.act(this.balance);
+        ExecutedTransaction executedTransaction = ExecutedTransaction.from(transaction, transaction.)
     }
 
     /**
@@ -44,5 +47,9 @@ public class Account {
      * */
     public boolean transactionProcessed(Transaction transaction){
         return transactions.contains(transaction);
+    }
+
+    public String[] extractHistory() {
+        return transactions.all();
     }
 }
