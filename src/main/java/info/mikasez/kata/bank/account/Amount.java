@@ -18,7 +18,6 @@ public class Amount {
      * @param value positive value representing currency
      * */
     public static Amount from(long value) {
-        assert value > 0L;
         return new Amount(value);
     }
 
